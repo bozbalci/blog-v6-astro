@@ -10,7 +10,7 @@ _How this site was made._
 
 ## Hosting
 
-This site is hosted on [DigitalOcean](https://www.digitalocean.com/) and is served through the [CloudFlare](https://www.cloudflare.com/) CDN. The domain name is also registered on CloudFlare, recently migrated from Google Domains after it was [killed by Google](https://killedbygoogle.com/).
+todo
 
 ## Technology
 

@@ -3,7 +3,7 @@ title: 'Now'
 permalink: '/now'
 layout: ../layouts/ContentLayout.astro
 created: 2024-08-04
-modified: 2024-27-04
+modified: 2024-12-01
 ---
 
 (This is a [now page](https://nownownow.com/about), inspired by [Derek Sivers](https://sive.rs/) and many other people who have one on their personal websites.)
