@@ -1,0 +1,78 @@
+---
+title: 'Contact'
+permalink: '/contact'
+layout: ../layouts/ContentLayout.astro
+created: 2024-08-04
+modified: 2024-08-18
+---
+
+You can contact me at my personal email addresses:
+
+- [berk@bozbalci.me](mailto:berk@bozbalci.me) (preferred) or [berkozbalci@gmail.com](mailto:berkozbalci@gmail.com)
+- PGP key ([keys.openpgp.org mirror](https://keys.openpgp.org/search?q=berk@bozbalci.me); fingerprint: `A8F24A4F15B6784C2438EFFCCDBEEC4BFA1D51C1`
+
+<details>
+<summary>
+View PGP key
+</summary>
+
+[//]: # (The surrounding newlines here are required to render the Markdown inside the details tag correctly.)
+
+```plaintext
+$ gpg --armor --export berk@bozbalci.me
+
+-----BEGIN PGP PUBLIC KEY BLOCK-----
+
+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
+=MV5d
+-----END PGP PUBLIC KEY BLOCK-----
+```
+</details>
+
+You can also reach out to me on [Signal](https://signal.me/#eu/1HJHxHBFblZOSypRtQMuWDQeWKZZwJz1-PHc6sAtmYazYtYZxAVOJIDyzID4P0Kb).

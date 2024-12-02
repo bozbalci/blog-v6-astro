@@ -1,0 +1,46 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+const dateFormatter = new Intl.DateTimeFormat("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric"
+})
+
+const {frontmatter} = Astro.props;
+const created = frontmatter.created;
+const modified = frontmatter.modified;
+
+let createdFmt = "";
+let modifiedFmt = "";
+if (created) {
+  createdFmt = dateFormatter.format(new Date(created));
+}
+if (modified) {
+  modifiedFmt = dateFormatter.format(new Date(modified));
+}
+---
+
+<BaseLayout title={`${frontmatter.title} – Berk Özbalcı`}>
+  <article class="h-entry wrapper">
+    <div id="article-container" class="prose mx-auto">
+      <header class="post-header">
+        <h1 class="entry-title">{frontmatter.title}</h1>
+        <div class="entry-meta">
+            {created &&
+                <>Posted on
+                  <a href={frontmatter.permalink} rel="bookmark">
+                    <time class="entry-date published" datetime={created}>
+                        {createdFmt}</time>
+                  </a>
+                </>}
+            {created && modified &&
+                <>&middot; last updated
+                  <time class="updated" datetime={modified}>{modifiedFmt}</time>
+                </>}
+        </div>
+      </header>
+      <slot/>
+    </div>
+  </article>
+</BaseLayout>
