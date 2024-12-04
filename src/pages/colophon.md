@@ -14,7 +14,7 @@ todo
 
 ## Technology
 
-This site is proudly powered by [Astro](https://astro.build).
+This site is powered by [Astro](https://astro.build).
 
 ## Typography
 

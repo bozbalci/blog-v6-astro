@@ -1,42 +1,14 @@
 ---
-type NavMenuItem = {
-    href: string;
-    text: string;
-    rel?: string | null;
-};
-
-const navMenu1: NavMenuItem[] = [
-    {href: '/about', text: 'About'},
-    // {href: '/gallery', text: 'Photos'},
-    {href: '/colophon', text: 'Colophon'},
-    // {href: '/feed', text: 'RSS'},
-];
-
-const navMenu2: NavMenuItem[] = [
-    {href: 'https://github.com/bozbalci', text: 'GitHub', rel: 'nofollow'},
-    {href: 'https://bsky.app/profile/bozbalci.me', text: 'Bluesky', rel: 'nofollow'},
-    {href: 'https://linkedin.com/in/bozbalci/', text: 'LinkedIn', rel: 'nofollow'},
-    {href: '/contact', text: 'Contact'},
-]
-
-const currentYear = new Date().getFullYear();
-
+import { Content as FinePrintContent } from '../content/footer/fine-print.mdx';
+import footerMenus from '../content/footer/links';
+const { navMenu1, navMenu2 } = footerMenus;
 ---
+
 <footer>
   <div class="wrapper">
     <div class="grid grid-cols-2">
       <div class="fine-print">
-        <p>
-          &copy;&nbsp;2014–{currentYear} Berk Özbalcı. Proudly powered by <a href="https://astro.build">Astro</a>.
-        </p>
-        <p>
-          No large language models were used in the production of this site.
-          (Inspired by <a href="https://tantek.com/">tantek.com</a>, which was
-          in turn inspired by
-          <a href="https://www.rfc-editor.org/rfc/rfc9518.html#appendix-A-4"
-          >RFC 9518 Appendix A ¶&nbsp;4</a
-          >).
-        </p>
+        <FinePrintContent />
       </div>
       <div class="flex space-x-m ml-auto">
         <div>
@@ -55,7 +27,6 @@ const currentYear = new Date().getFullYear();
     </div>
   </div>
 </footer>
-
 
 <style lang="scss">
   footer {
