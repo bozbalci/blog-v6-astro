@@ -1,24 +1,12 @@
 ---
 import Layout from "../layouts/BaseLayout.astro";
+import { Content as LandingPageContent } from '../content/site/landing-page.mdx';
 ---
 
 <Layout title="Berk Özbalcı">
   <article class="wrapper">
     <div class="prose mx-auto">
-      <h1>this site is very much under construction please check back later</h1>
-      <p>
-        My name is Berk and I'm a software engineer, coffee enthusiast, amateur
-        photographer and musician living in London.
-      </p>
-      <p>
-        I'm currently working for Apple, making Apple Pay work for billions of
-        customers around the world.
-      </p>
-      <p>
-        This is my little home on the internet, my online presence outside
-        social media.
-      </p>
-
+      <LandingPageContent />
       <!--<h2>Writing</h2>-->
       <!--<div class="post-list">-->
       <!--  <div class="post-thumbnail">-->
@@ -29,3 +17,21 @@ import Layout from "../layouts/BaseLayout.astro";
     </div>
   </article>
 </Layout>
+
+<style lang="scss">
+  .post-thumbnail {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-block: 0.5rem;
+
+    time {
+      color: var(--gray-11);
+    }
+
+    & + & {
+      border-top-width: 1px;
+      border-top-color: var(--gray-5);
+    }
+  }
+</style>

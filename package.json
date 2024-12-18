@@ -11,9 +11,12 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
+    "@astrojs/cloudflare": "^12.1.0",
     "@astrojs/mdx": "^4.0.1",
+    "@astrojs/rss": "^4.0.10",
     "astro": "^5.0.2",
     "lightgallery": "^2.8.2",
+    "marked": "^15.0.4",
     "typescript": "^5.7.2"
   },
   "devDependencies": {

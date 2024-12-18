@@ -9,11 +9,6 @@
   display: flex;
 }
 
-.grid {
-  display: grid;
-  gap: var(--gutter);
-}
-
 .grid-cols-2 {
   grid-template-columns: 1fr 1fr;
 }
@@ -27,14 +22,17 @@
 }
 
 .font-sans {
+  //noinspection CssNoGenericFontName
   font-family: var(--font-sans);
 }
 
 .font-serif {
+  //noinspection CssNoGenericFontName
   font-family: var(--font-serif);
 }
 
 .font-mono {
+  //noinspection CssNoGenericFontName
   font-family: var(--font-mono);
 }
 
@@ -56,6 +54,14 @@
 
 .ml-auto {
   margin-inline-start: auto;
+}
+
+@each $item in variables.$type-scales {
+  $step: map.get($item, 'step');
+
+  .text-step-#{$step} {
+    font-size: var(--step-#{$step});
+  }
 }
 
 @each $size in map.get(variables.$space-scales, 'sizes') {
@@ -120,14 +126,6 @@
   .p-#{$label} {
     padding: var(--space-#{$label});
   }
-}
-
-@each $size in map.get(variables.$space-scales, 'oneUpPairs') {
-  // --space-#{map.get($size, "label")}: #{map.get($size, 'clamp')};
-}
-
-@each $size in map.get(variables.$space-scales, 'customPairs') {
-  // --space-#{map.get($size, "label")}: #{map.get($size, 'clamp')};
 }
 
 .icon {

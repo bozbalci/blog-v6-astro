@@ -1,0 +1,87 @@
+---
+import {marked} from "marked";
+
+import Stars from "../../../components/Stars.astro";
+import MusicCollectionLayout from "../../../layouts/MusicCollectionLayout.astro";
+
+export const prerender = false;
+
+const {slug} = Astro.params;
+
+const response = await fetch(`http://localhost:8000/api/music/album/${slug}`);
+const album = await response.json();
+
+const reviewHtml = marked.parse(album.review);
+---
+
+<MusicCollectionLayout title="ha">
+  <div class="a-album sidebar">
+    <div class="a-cover-art">
+      <img src={album.cover_image_url} alt="album"/>
+    </div>
+    <div class="a-meta font-mono text-step--1">
+      <h1>{album.title}</h1>
+      <dl>
+        <dt>Artist</dt>
+        <dd>{album.artist}</dd>
+        <dt>Release year</dt>
+        <dd>{album.year}</dd>
+        {album.rating !== null && (
+            <>
+              <dt>Berk's rating</dt>
+              <dd>
+                <Stars value={album.rating}/>
+              </dd>
+            </>
+        )}
+      </dl>
+      <ul>
+        {album.discogs_url && (
+            <li><a href={album.discogs_url}>View release on Discogs</a></li>
+        )}
+        {album.openscrobbler_url && (
+            <li><a href={album.openscrobbler_url}>Scrobble this album</a></li>
+        )}
+      </ul>
+    </div>
+  </div>
+  <article class="a-review prose" set:html={reviewHtml}/>
+</MusicCollectionLayout>
+
+<style lang="scss">
+  h1 {
+    font-size: var(--step-1);
+    font-weight: bold;
+    margin-bottom: var(--space-s);
+  }
+
+  dl {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0 var(--space-s);
+  }
+
+  dd {
+    display: flex;
+    align-items: center;
+  }
+
+  dt {
+    font-weight: bold;
+  }
+
+  .a-album {
+    align-items: flex-start;
+    gap: var(--space-s);
+  }
+
+  .a-review {
+    margin-top: var(--space-s);
+  }
+
+  img {
+    aspect-ratio: 1;
+    object-fit: cover;
+    border: 1px solid var(--gray-6);
+  }
+</style>

@@ -6,8 +6,9 @@ type NavMenuItem = {
 
 const navMenu1: NavMenuItem[] = [
     {href: '/about', text: 'About'},
-    // {href: '/gallery', text: 'Photos'},
+    {href: '/gallery', text: 'Photos'},
     {href: '/colophon', text: 'Colophon'},
+    {href: '/music-collection', text: 'Music Collection'},
     // {href: '/feed', text: 'RSS'},
 ];
 

@@ -3,10 +3,12 @@
 @use 'global/normalize';
 @use 'global/lib/dependencies';
 
-// Utilities
 @use 'utilities/visually-hidden';
 @use 'utilities/utilities';
 
-// Base
+@use 'components/sidebar';
+@use 'components/grid';
+@use 'components/repel';
+
 @use 'base';
 @use 'typography';

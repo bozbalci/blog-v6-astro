@@ -1,11 +1,6 @@
 ---
 import BaseLayout from './BaseLayout.astro';
-
-const dateFormatter = new Intl.DateTimeFormat("en-US", {
-    month: "long",
-    day: "numeric",
-    year: "numeric"
-})
+import {formatDate} from "../utils/date-formatter";
 
 const {frontmatter} = Astro.props;
 const created = frontmatter.created;
@@ -14,10 +9,10 @@ const modified = frontmatter.modified;
 let createdFmt = "";
 let modifiedFmt = "";
 if (created) {
-  createdFmt = dateFormatter.format(new Date(created));
+  createdFmt = formatDate(created);
 }
 if (modified) {
-  modifiedFmt = dateFormatter.format(new Date(modified));
+  modifiedFmt = formatDate(modified);
 }
 ---
 
@@ -31,8 +26,7 @@ if (modified) {
                 <>Posted on
                   <a href={frontmatter.permalink} rel="bookmark">
                     <time class="entry-date published" datetime={created}>
-                        {createdFmt}</time>
-                  </a>
+                        {createdFmt}</time></a>
                 </>}
             {created && modified &&
                 <>&middot; last updated

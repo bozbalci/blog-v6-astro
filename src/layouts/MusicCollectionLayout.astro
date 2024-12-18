@@ -1,0 +1,35 @@
+---
+import BaseLayout from './BaseLayout.astro';
+---
+
+<BaseLayout title="Music Collection">
+  <div class="wrapper">
+    <div class="music-collection sidebar">
+      <nav class="docked">
+        <ul>
+          <li><a href="/music-collection">Everything</a></li>
+          <li><a href="/music-collection/all-time">All-time favourites</a></li>
+          <li><a href="/music-collection/2024">2024</a></li>
+          <li><a href="/music-collection/shuffled">Shuffled</a></li>
+        </ul>
+      </nav>
+      <div>
+        <slot />
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style lang="scss">
+  .music-collection {
+    --sidebar-target-width: 14.5rem;
+    align-items: flex-start;
+  }
+
+  @media screen and (min-width: 1024px) {
+    .docked {
+      position: sticky;
+      top: var(--gutter);
+    }
+  }
+</style>

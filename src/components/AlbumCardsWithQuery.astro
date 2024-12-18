@@ -1,0 +1,25 @@
+---
+import AlbumCard from "./AlbumCard.astro";
+
+const { url } = Astro.props;
+const response = await fetch(url);
+const data = await response.json();
+---
+
+<ul class="a-query grid" role="list">
+    {data.map((item, index) =>
+        <AlbumCard key={index}
+                   artist={item.artist}
+                   title={item.title}
+                   slug={item.slug}
+                   coverImageUrl={item.cover_image_url}
+        />
+    )}
+</ul>
+
+<style lang="scss">
+  .a-query {
+    --grid-min-item-size: 12rem;
+    gap: var(--gutter);
+  }
+</style>

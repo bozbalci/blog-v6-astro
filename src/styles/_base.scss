@@ -47,10 +47,6 @@ body {
   padding-inline: var(--gutter);
 }
 
-.max-width-prose {
-  max-width: 65ch;
-}
-
 /*
  * Links
  */
@@ -84,28 +80,3 @@ body {
   background-color: var(--accent-7);
   color: var(--gray-12);
 }
-
-/*
- * Components TODO move and organize these
- */
-
-.post-thumbnail {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-block: 0.5rem;
-
-  time {
-    color: var(--gray-11);
-  }
-
-  & + & {
-    border-top-width: 1px;
-    border-top-color: var(--gray-5);
-  }
-}
-
-// Debug:
-//* {
-//  border: 1px solid red;
-//}

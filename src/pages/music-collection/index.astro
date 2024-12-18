@@ -1,0 +1,8 @@
+---
+import MusicCollectionLayout from "../../layouts/MusicCollectionLayout.astro";
+import AlbumCardsWithQuery from "../../components/AlbumCardsWithQuery.astro";
+---
+
+<MusicCollectionLayout title="Music Collection">
+  <AlbumCardsWithQuery url="http://localhost:8000/api/music/albums" />
+</MusicCollectionLayout>

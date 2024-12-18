@@ -1,16 +1,16 @@
 ---
-import { Content as FinePrintContent } from '../content/footer/fine-print.mdx';
-import footerMenus from '../content/footer/links';
+import { Content as FinePrintContent } from '../content/site/fine-print.mdx';
+import footerMenus from '../content/site/footer-links';
 const { navMenu1, navMenu2 } = footerMenus;
 ---
 
 <footer>
-  <div class="wrapper">
-    <div class="grid grid-cols-2">
-      <div class="fine-print">
+  <div class="wrapper text-step--1">
+    <div class="flex repel">
+      <div class="fine-print text-step--2">
         <FinePrintContent />
       </div>
-      <div class="flex space-x-m ml-auto">
+      <div class="flex space-x-m">
         <div>
           <ul>
               {navMenu1.map((item) => (
@@ -34,10 +34,5 @@ const { navMenu1, navMenu2 } = footerMenus;
     border-top: 1px solid var(--gray-6);
     padding-top: var(--space-m);
     padding-bottom: var(--space-m);
-    font-size: var(--step--1);
-  }
-
-  .fine-print {
-    font-size: var(--step--2);
   }
 </style>

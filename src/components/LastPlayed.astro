@@ -1,0 +1,58 @@
+---
+import {Image} from "astro:assets";
+
+type LastfmImage = {
+    size: string;
+    "#text": string;
+};
+
+type LastfmArtist = {
+    "#text": string;
+}
+
+type LastfmAlbum = {
+    "#text": string;
+}
+
+type LastfmTrack = {
+    artist: LastfmArtist;
+    album: LastfmAlbum;
+    image: LastfmImage[];
+    name: string;
+    url: string;
+}
+
+
+const response = await fetch("http://localhost:8000/api/music/last-played");
+const data = await response.json();
+const track: LastfmTrack = data.recenttracks.track[0];
+const artist = track.artist["#text"];
+const album = track.album["#text"];
+const title = track.name;
+const smallImage = track.image.find(item => item.size === "small");
+const smallImageUrl = smallImage ? smallImage["#text"] : null;
+const imageAlt = `Cover art of ${album} by ${artist}`
+---
+
+<p>
+  <strong>Latest track from <a href="https://last.fm/user/theconjuring666">Last.fm</a>:</strong>
+    {smallImageUrl ?
+        <Image src={smallImageUrl} alt={imageAlt} width={16} height={16}/>
+        : null
+    }
+  <a href={track.url} target="_blank">
+      {artist} &ndash; {title}
+  </a>
+</p>
+
+<style lang="scss">
+  strong {
+    display: block;
+  }
+
+  img {
+    height: 1rem;
+    display: inline-block;
+    text-decoration: none;
+  }
+</style>
