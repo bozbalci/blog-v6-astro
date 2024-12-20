@@ -1,4 +1,4 @@
-import type {Album, LastfmTrack} from "@types/api";
+import type { Album, LastfmTrack } from "@types/api";
 
 const NOTCMS_API_ROOT = "http://localhost:8000/api";
 
@@ -17,7 +17,7 @@ class NotAPI {
       throw new Error(
         `API request failed with status ${response.status}: ${
           errorDetails?.message || response.statusText
-        }`
+        }`,
       );
     }
 

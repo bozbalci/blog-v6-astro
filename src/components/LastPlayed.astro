@@ -1,27 +1,30 @@
 ---
-import {Image} from "astro:assets";
+import { Image } from "astro:assets";
 
-import {api} from "@utils/api";
-
+import { api } from "@utils/api";
 
 const track = await api.getLastPlayed();
 
 const artist = track.artist["#text"];
 const album = track.album["#text"];
 const title = track.name;
-const smallImage = track.image.find(item => item.size === "small");
+const smallImage = track.image.find((item) => item.size === "small");
 const smallImageUrl = smallImage ? smallImage["#text"] : null;
-const imageAlt = `Cover art of ${album} by ${artist}`
+const imageAlt = `Cover art of ${album} by ${artist}`;
 ---
 
 <p>
-  <strong>Latest track from <a href="https://last.fm/user/theconjuring666">Last.fm</a>:</strong>
-    {smallImageUrl ?
-        <Image src={smallImageUrl} alt={imageAlt} width={16} height={16}/>
-        : null
-    }
+  <strong
+    >Latest track from <a href="https://last.fm/user/theconjuring666">Last.fm</a
+    >:</strong
+  >
+  {
+    smallImageUrl ? (
+      <Image src={smallImageUrl} alt={imageAlt} width={16} height={16} />
+    ) : null
+  }
   <a href={track.url} target="_blank">
-      {artist} &ndash; {title}
+    {artist} &ndash; {title}
   </a>
 </p>
 

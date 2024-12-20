@@ -1,14 +1,14 @@
-@use 'global/variables';
-@use 'global/fonts';
-@use 'global/normalize';
-@use 'global/lib/dependencies';
+@use "global/variables";
+@use "global/fonts";
+@use "global/normalize";
+@use "global/lib/dependencies";
 
-@use 'utilities/visually-hidden';
-@use 'utilities/utilities';
+@use "utilities/visually-hidden";
+@use "utilities/utilities";
 
-@use 'compositions/sidebar';
-@use 'compositions/grid';
-@use 'compositions/repel';
+@use "compositions/sidebar";
+@use "compositions/grid";
+@use "compositions/repel";
 
-@use 'base';
-@use 'typography';
+@use "base";
+@use "typography";

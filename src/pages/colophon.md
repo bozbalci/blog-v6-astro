@@ -1,6 +1,6 @@
 ---
-title: 'Colophon'
-permalink: '/colophon'
+title: "Colophon"
+permalink: "/colophon"
 layout: ../layouts/ContentLayout.astro
 created: 2024-08-04
 modified: 2024-12-19
@@ -33,7 +33,7 @@ The [photo gallery](/gallery) is powered by a JavaScript library called [lightGa
 
 ### Music collection
 
-The [music collection](/music-collection) page’s design was inspired by [Andy Bell’s website](https://bell.bz/music-collection/). He is the co-creator of [Every Layout](https://every-layout.dev), a book that taught me a lot about CSS and web design principles. 
+The [music collection](/music-collection) page’s design was inspired by [Andy Bell’s website](https://bell.bz/music-collection/). He is the co-creator of [Every Layout](https://every-layout.dev), a book that taught me a lot about CSS and web design principles.
 
 ## Typography
 

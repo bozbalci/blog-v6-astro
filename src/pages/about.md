@@ -1,6 +1,6 @@
 ---
-title: 'About'
-permalink: '/about'
+title: "About"
+permalink: "/about"
 layout: ../layouts/ContentLayout.astro
 created: 2024-08-04
 modified: 2024-12-19
@@ -14,7 +14,7 @@ Outside work, I:
 
 - shoot photos with my Fujifilm X-T5, where the best ones are uploaded into the [gallery](/gallery).
 - collect and listen to vinyl records. You can [view my collection](/music-collection) on this site.
-- brew coffee and make lattes. If it looks like *anything at all,* I post it to my [latte art album](/gallery/album/latte-art) too!
+- brew coffee and make lattes. If it looks like _anything at all,_ I post it to my [latte art album](/gallery/album/latte-art) too!
 
 ## About this site
 
@@ -24,6 +24,6 @@ In my opinion, online avenues for proper self-expression is shrinking every day 
 
 You can find notes on how the site was made in the [Colophon](/colophon).
 
-[^1]:/bæɾc ˈœz.baɫ.dʒɯ/. See the [Turkish IPA][wiki-help-ipa] page on Wikipedia for further instructions.
+[^1]: /bæɾc ˈœz.baɫ.dʒɯ/. See the [Turkish IPA][wiki-help-ipa] page on Wikipedia for further instructions.
 
 [wiki-help-ipa]: https://en.wikipedia.org/wiki/Help:IPA/Turkish

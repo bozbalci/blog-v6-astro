@@ -1,20 +1,16 @@
 ---
-import {formatDate} from "@utils/date-formatter";
+import { formatDate } from "@utils/date-formatter";
 import PhotoLayout from "@layouts/PhotoLayout.astro";
+import type { PhotoAlbum } from "@types/api";
 
 export const prerender = false;
 
-const {id} = Astro.params;
+const { id } = Astro.params;
 
 const response = await fetch(`http://localhost:8000/api/photos/${id}`);
 const data = await response.json();
 
-const {
-  title,
-  image_url: imageSrc,
-  uploaded_at: uploadedAt,
-  albums
-} = data;
+const { title, image_url: imageSrc, uploaded_at: uploadedAt, albums } = data;
 
 const {
   make,
@@ -24,14 +20,15 @@ const {
   aperture,
   shutter,
   iso,
-  shot_at: shotAt
+  shot_at: shotAt,
 } = data.exif;
 ---
+
 <PhotoLayout title="Image">
   <article class="h-entry">
     <div id="article-container" class="prose mx-auto">
       <div id="lg-single">
-        <img src={imageSrc} alt={title}/>
+        <img src={imageSrc} alt={title} />
       </div>
 
       <div class="image-meta font-mono">
@@ -52,16 +49,27 @@ const {
         </div>
 
         <div class="text-right">
-          {title && (
-              <div><span class="e-title">{title}</span></div>)}
+          {
+            title && (
+              <div>
+                <span class="e-title">{title}</span>
+              </div>
+            )
+          }
           <div>
-            <span class="e-uploaded">Uploaded on <time datetime={uploadedAt}>{formatDate(uploadedAt)}</time></span>
+            <span class="e-uploaded"
+              >Uploaded on <time datetime={uploadedAt}
+                >{formatDate(uploadedAt)}</time
+              ></span
+            >
           </div>
           <div>
-            <span class="e-taken">Taken on <time datetime={shotAt}>{formatDate(shotAt)}</time></span>
+            <span class="e-taken"
+              >Taken on <time datetime={shotAt}>{formatDate(shotAt)}</time
+              ></span
+            >
           </div>
         </div>
-
       </div>
 
       <div class="mx-auto font-serif mt-s">
@@ -69,17 +77,18 @@ const {
           <li>
             <a href="/gallery">Back to the gallery</a>
           </li>
-          {albums.map((album, index) => (
+          {
+            albums.map((album: PhotoAlbum, index: number) => (
               <li>
-                <a href=`/gallery/album/${album.slug}`>
+                <a href={`/gallery/album/${album.slug}`}>
                   Back to the album &lsquo;{album.name}&rsquo;
                 </a>
               </li>
-          ))}
+            ))
+          }
         </ul>
       </div>
     </div>
-
   </article>
 </PhotoLayout>
 
@@ -118,7 +127,7 @@ const {
     const options = {
       speed: 500,
       enableDrag: false,
-      counter: false
+      counter: false,
     };
 
     lightGallery(element, options);
@@ -129,5 +138,5 @@ const {
     if (element) {
       registerSingleImageLightGallery(element);
     }
-  }
+  };
 </script>

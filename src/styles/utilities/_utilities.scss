@@ -1,5 +1,5 @@
-@use 'sass:map';
-@use '../global/variables';
+@use "sass:map";
+@use "../global/variables";
 
 .no-underline {
   text-decoration: none;
@@ -61,15 +61,15 @@
 }
 
 @each $item in variables.$type-scales {
-  $step: map.get($item, 'step');
+  $step: map.get($item, "step");
 
   .text-step-#{$step} {
     font-size: var(--step-#{$step});
   }
 }
 
-@each $size in map.get(variables.$space-scales, 'sizes') {
-  $label: map.get($size, 'label');
+@each $size in map.get(variables.$space-scales, "sizes") {
+  $label: map.get($size, "label");
 
   .space-x-#{$label} > * + * {
     margin-inline-start: var(--space-#{$label});

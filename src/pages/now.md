@@ -1,6 +1,6 @@
 ---
-title: 'Now'
-permalink: '/now'
+title: "Now"
+permalink: "/now"
 layout: ../layouts/ContentLayout.astro
 created: 2024-08-04
 modified: 2024-12-01

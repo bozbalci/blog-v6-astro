@@ -1,13 +1,17 @@
 ---
-import type {NavLink} from "@types/ui";
+import type { NavLink } from "@types/ui";
 const { links } = Astro.props;
 ---
 
 <nav class="sticky">
   <ul>
-      {links.map((link: NavLink, index: number) => (
-          <li><a href={link.href}>{link.text}</a></li>
-      ))}
+    {
+      links.map((link: NavLink, index: number) => (
+        <li>
+          <a href={link.href}>{link.text}</a>
+        </li>
+      ))
+    }
   </ul>
 </nav>
 

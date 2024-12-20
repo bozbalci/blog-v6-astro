@@ -1,15 +1,14 @@
 ---
-const {
-    title,
-    artist,
-    coverImageUrl,
-    slug
-} = Astro.props;
+const { title, artist, coverImageUrl, slug } = Astro.props;
 ---
 
 <li>
   <a href={`/music-collection/album/${slug}`} class="no-underline">
-    <img src={coverImageUrl} alt={`Cover art for ${artist} - ${title}`} loading="lazy"/>
+    <img
+      src={coverImageUrl}
+      alt={`Cover art for ${artist} - ${title}`}
+      loading="lazy"
+    />
     <div class="a-title">{title}</div>
     <div class="a-artist">{artist}</div>
   </a>

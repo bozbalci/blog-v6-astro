@@ -1,25 +1,25 @@
 ---
-import {formatDate} from "@utils/date-formatter";
+import { formatDate } from "@utils/date-formatter";
 
-const {image} = Astro.props;
+const { image } = Astro.props;
 
 const {
-    id,
-    title,
-    image_url: imageSrc,
-    thumbnail_url: thumbnailSrc,
-    uploaded_at: uploadedAt,
+  id,
+  title,
+  image_url: imageSrc,
+  thumbnail_url: thumbnailSrc,
+  uploaded_at: uploadedAt,
 } = image;
 
 const {
-    make,
-    model,
-    focal_length: focalLength,
-    lens,
-    aperture,
-    shutter,
-    iso,
-    shot_at: shotAt
+  make,
+  model,
+  focal_length: focalLength,
+  lens,
+  aperture,
+  shutter,
+  iso,
+  shot_at: shotAt,
 } = image.exif;
 
 const galleryPermalink = `/gallery/photo/${id}`;
@@ -27,8 +27,11 @@ const galleryPermalink = `/gallery/photo/${id}`;
 const captionHtml = `
 <div class="lg-multi-image-caption">
   <div class="e-textbg">
-    ${title ? '<span class="e-title">' + title + '</span>'
-            : '<span class="e-untitled">Untitled</span>'}
+    ${
+      title
+        ? '<span class="e-title">' + title + "</span>"
+        : '<span class="e-untitled">Untitled</span>'
+    }
   </div>
   <div>
     <span class="e-label">Camera</span>
@@ -60,7 +63,7 @@ const captionHtml = `
 
 <a href={galleryPermalink}>
   <div class="photo-thumbnail" data-src={imageSrc} data-sub-html={captionHtml}>
-    <img src={thumbnailSrc} alt={title}/>
+    <img src={thumbnailSrc} alt={title} />
   </div>
 </a>
 
@@ -72,7 +75,8 @@ const captionHtml = `
     font-family: var(--font-mono);
     font-size: var(--step--2);
 
-    .e-label, .e-permalink {
+    .e-label,
+    .e-permalink {
       color: var(--gray-9);
     }
 

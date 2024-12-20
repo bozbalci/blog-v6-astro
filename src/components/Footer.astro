@@ -1,24 +1,38 @@
 ---
-import {Content as FinePrintContent} from '@content/site/fine-print.mdx';
-import footerMenus from '@content/site/footer-links';
+import { Content as FinePrintContent } from "@content/site/fine-print.mdx";
+import footerMenus from "@content/site/footer-links";
 
-const {navMenu1, navMenu2} = footerMenus;
+const { navMenu1, navMenu2 } = footerMenus;
 ---
 
 <footer>
   <div class="wrapper text-step--1">
     <div class="footer-contents flex repel">
       <div class="fine-print text-step--2">
-        <FinePrintContent/>
+        <FinePrintContent />
       </div>
       <div class="flex space-x-m">
         <ul>
-            {navMenu1.map((item) => (
-                <li><a href={item.href} rel={item.rel}>{item.text}</a></li>))}
+          {
+            navMenu1.map((item) => (
+              <li>
+                <a href={item.href} rel={item.rel}>
+                  {item.text}
+                </a>
+              </li>
+            ))
+          }
         </ul>
         <ul>
-            {navMenu2.map((item) => (
-                <li><a href={item.href} rel={item.rel}>{item.text}</a></li>))}
+          {
+            navMenu2.map((item) => (
+              <li>
+                <a href={item.href} rel={item.rel}>
+                  {item.text}
+                </a>
+              </li>
+            ))
+          }
         </ul>
       </div>
     </div>

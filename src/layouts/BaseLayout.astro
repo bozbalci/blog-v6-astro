@@ -1,48 +1,50 @@
 ---
 interface Props {
-    title: string;
+  title: string;
 }
 
-const {title} = Astro.props;
+const { title } = Astro.props;
 
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
 
 // TODO These should really be imported in the SCSS
-import '@radix-ui/colors/olive.css';
-import '@radix-ui/colors/olive-dark.css';
-import '@radix-ui/colors/jade.css';
-import '@radix-ui/colors/jade-dark.css';
+import "@radix-ui/colors/olive.css";
+import "@radix-ui/colors/olive-dark.css";
+import "@radix-ui/colors/jade.css";
+import "@radix-ui/colors/jade-dark.css";
 
 import "@styles/theme.scss";
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" class="no-js">
-<head>
-  <meta charset="UTF-8"/>
-  <title>{title}</title>
-  <meta name="description" content="Personal home page of Berk Özbalcı"/>
-  <meta name="viewport" content="width=device-width"/>
-  <meta name="generator" content={Astro.generator}/>
+  <head>
+    <meta charset="UTF-8" />
+    <title>{title}</title>
+    <meta name="description" content="Personal home page of Berk Özbalcı" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
 
-  <!--Generated using Real Favicon Generator-->
-  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96"/>
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
-  <link rel="shortcut icon" href="/favicon.ico"/>
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/>
-  <meta name="apple-mobile-web-app-title" content="bozbalci"/>
-</head>
-<body>
-<a href="#main-content" class="visually-hidden focusable">Skip to main content</a>
-<Header/>
-<main id="main-content" class="main">
-  <slot/>
-</main>
-<Footer/>
-</body>
+    <!--Generated using Real Favicon Generator-->
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="bozbalci" />
+  </head>
+  <body>
+    <a href="#main-content" class="visually-hidden focusable"
+      >Skip to main content</a
+    >
+    <Header />
+    <main id="main-content" class="main">
+      <slot />
+    </main>
+    <Footer />
+  </body>
 </html>
 
 <script is:inline>
-    document.documentElement.classList.remove('no-js');
+  document.documentElement.classList.remove("no-js");
 </script>

@@ -1,20 +1,23 @@
 ---
 import AlbumCard from "./AlbumCard.astro";
-import type {Album} from "@types/api";
+import type { Album } from "@types/api";
 
-const {url} = Astro.props;
+const { url } = Astro.props;
 const response = await fetch(url);
 const data = await response.json();
 ---
+
 <ul class="a-query grid">
-    {data.map((item: Album, index: number) =>
-        <AlbumCard
-            artist={item.artist}
-            title={item.title}
-            slug={item.slug}
-            coverImageUrl={item.cover_image_url}
-        />
-    )}
+  {
+    data.map((item: Album, index: number) => (
+      <AlbumCard
+        artist={item.artist}
+        title={item.title}
+        slug={item.slug}
+        coverImageUrl={item.cover_image_url}
+      />
+    ))
+  }
 </ul>
 
 <style lang="scss">

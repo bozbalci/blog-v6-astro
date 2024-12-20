@@ -1,13 +1,13 @@
 ---
-import {marked} from "marked";
+import { marked } from "marked";
 
 import Stars from "@components/Stars.astro";
 import MusicCollectionLayout from "@layouts/MusicCollectionLayout.astro";
-import {api} from "@utils/api";
+import { api } from "@utils/api";
 
 export const prerender = false;
 
-const {slug} = Astro.params;
+const { slug } = Astro.params;
 
 if (slug === undefined) {
   throw new Error("Album slug is missing. Unable to fetch the album.");
@@ -22,7 +22,7 @@ const reviewHtml = marked.parse(album.review);
   <div class="flow">
     <div class="a-album sidebar">
       <div class="a-cover-art">
-        <img src={album.cover_image_url} alt="album"/>
+        <img src={album.cover_image_url} alt="album" />
       </div>
       <div class="a-meta font-mono text-step--1">
         <h1>{album.title}</h1>
@@ -31,26 +31,36 @@ const reviewHtml = marked.parse(album.review);
           <dd>{album.artist}</dd>
           <dt>Release year</dt>
           <dd>{album.year}</dd>
-          {album.rating !== null && (
+          {
+            album.rating !== null && (
               <>
                 <dt>Berk's rating</dt>
                 <dd>
-                  <Stars value={album.rating}/>
+                  <Stars value={album.rating} />
                 </dd>
               </>
-          )}
+            )
+          }
         </dl>
         <ul>
-          {album.discogs_url && (
-              <li><a href={album.discogs_url}>View release on Discogs</a></li>
-          )}
-          {album.openscrobbler_url && (
-              <li><a href={album.openscrobbler_url}>Scrobble this album</a></li>
-          )}
+          {
+            album.discogs_url && (
+              <li>
+                <a href={album.discogs_url}>View release on Discogs</a>
+              </li>
+            )
+          }
+          {
+            album.openscrobbler_url && (
+              <li>
+                <a href={album.openscrobbler_url}>Scrobble this album</a>
+              </li>
+            )
+          }
         </ul>
       </div>
     </div>
-    <article class="a-review prose" set:html={reviewHtml}/>
+    <article class="a-review prose" set:html={reviewHtml} />
   </div>
 </MusicCollectionLayout>
 

@@ -1,14 +1,14 @@
 ---
-import BaseLayout from '@layouts/BaseLayout.astro';
-import StickyNav from '@components/StickyNav.astro';
-import {photoNav} from "@content/site/photo-navigation";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import StickyNav from "@components/StickyNav.astro";
+import { photoNav } from "@content/site/photo-navigation";
 ---
 
 <BaseLayout title="Photo">
   <div class="wrapper">
     <div class="photo-gallery sidebar">
-      <StickyNav links={photoNav}/>
-      <slot/>
+      <StickyNav links={photoNav} />
+      <slot />
     </div>
   </div>
 </BaseLayout>

@@ -1,14 +1,14 @@
 ---
-import BaseLayout from '@layouts/BaseLayout.astro';
-import StickyNav from '@components/StickyNav.astro';
-import {musicNav} from "@content/site/music-collection-navigation";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import StickyNav from "@components/StickyNav.astro";
+import { musicNav } from "@content/site/music-collection-navigation";
 ---
 
 <BaseLayout title="Music Collection">
   <div class="wrapper">
     <div class="music-collection sidebar">
-      <StickyNav links={musicNav}/>
-      <slot/>
+      <StickyNav links={musicNav} />
+      <slot />
     </div>
   </div>
 </BaseLayout>

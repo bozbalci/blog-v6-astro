@@ -1,6 +1,6 @@
 ---
-title: 'Contact'
-permalink: '/contact'
+title: "Contact"
+permalink: "/contact"
 layout: ../layouts/ContentLayout.astro
 created: 2024-08-04
 modified: 2024-08-18
@@ -16,7 +16,7 @@ You can contact me at my personal email addresses:
 View PGP key
 </summary>
 
-[//]: # (The surrounding newlines here are required to render the Markdown inside the details tag correctly.)
+[//]: # "The surrounding newlines here are required to render the Markdown inside the details tag correctly."
 
 ```plaintext
 $ gpg --armor --export berk@bozbalci.me
@@ -73,6 +73,7 @@ jqJSaYYPMBYH0e0KRYTXFpE1vpkq2HkB9O8rN3S5tWPRlTYOCFbdB/JA2gLJbXzy
 =MV5d
 -----END PGP PUBLIC KEY BLOCK-----
 ```
+
 </details>
 
 You can also reach out to me on [Signal](https://signal.me/#eu/1HJHxHBFblZOSypRtQMuWDQeWKZZwJz1-PHc6sAtmYazYtYZxAVOJIDyzID4P0Kb).
