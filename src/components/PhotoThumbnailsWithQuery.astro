@@ -1,0 +1,45 @@
+---
+import PhotoThumbnail from "./PhotoThumbnail.astro";
+import type {Photo} from "../types/api";
+
+const { url } = Astro.props;
+
+const response = await fetch(url);
+const data = await response.json();
+---
+
+<div class="grid" id="gallery">
+  {data.map((item: Photo, index: number) =>
+      <PhotoThumbnail image={item}/>
+  )}
+</div>
+
+<style lang="scss">
+  .grid {
+    --gutter: var(--space-3xs);
+  }
+</style>
+
+<script>
+  import lightGallery from "lightgallery";
+
+  function registerMultiImageLightGallery(element: HTMLElement) {
+    const options = {
+      speed: 500,
+      enableDrag: false,
+      counter: true,
+      licenseKey: "09C98B16-6CB8-429D-9D8A-54EF3FEBB5CE",
+      subHtmlSelectorRelative: true,
+      selector: ".photo-thumbnail",
+    };
+
+    lightGallery(element, options);
+  }
+
+  window.onload = () => {
+    const element = document.getElementById("gallery");
+    if (element) {
+      registerMultiImageLightGallery(element);
+    }
+  }
+</script>

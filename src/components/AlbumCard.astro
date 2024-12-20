@@ -5,14 +5,11 @@ const {
     coverImageUrl,
     slug
 } = Astro.props;
-
-const detailsHref = `/music-collection/album/${slug}`;
-const imageAlt = `Cover art for ${artist} - ${title}`;
 ---
 
 <li>
-  <a href={detailsHref} class="no-underline">
-    <img src={coverImageUrl} alt={imageAlt} loading="lazy" />
+  <a href={`/music-collection/album/${slug}`} class="no-underline">
+    <img src={coverImageUrl} alt={`Cover art for ${artist} - ${title}`} loading="lazy"/>
     <div class="a-title">{title}</div>
     <div class="a-artist">{artist}</div>
   </a>

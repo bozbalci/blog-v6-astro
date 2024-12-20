@@ -6,9 +6,9 @@
 @use 'utilities/visually-hidden';
 @use 'utilities/utilities';
 
-@use 'components/sidebar';
-@use 'components/grid';
-@use 'components/repel';
+@use 'compositions/sidebar';
+@use 'compositions/grid';
+@use 'compositions/repel';
 
 @use 'base';
 @use 'typography';

@@ -1,26 +1,6 @@
 ---
 import {Image} from "astro:assets";
-
-type LastfmImage = {
-    size: string;
-    "#text": string;
-};
-
-type LastfmArtist = {
-    "#text": string;
-}
-
-type LastfmAlbum = {
-    "#text": string;
-}
-
-type LastfmTrack = {
-    artist: LastfmArtist;
-    album: LastfmAlbum;
-    image: LastfmImage[];
-    name: string;
-    url: string;
-}
+import type {LastfmTrack} from "../types/api";
 
 
 const response = await fetch("http://localhost:8000/api/music/last-played");

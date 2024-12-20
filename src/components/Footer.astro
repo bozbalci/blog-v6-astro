@@ -1,28 +1,24 @@
 ---
-import { Content as FinePrintContent } from '../content/site/fine-print.mdx';
+import {Content as FinePrintContent} from '../content/site/fine-print.mdx';
 import footerMenus from '../content/site/footer-links';
-const { navMenu1, navMenu2 } = footerMenus;
+const {navMenu1, navMenu2} = footerMenus;
 ---
 
 <footer>
   <div class="wrapper text-step--1">
-    <div class="flex repel">
+    <div class="footer-contents flex repel">
       <div class="fine-print text-step--2">
-        <FinePrintContent />
+        <FinePrintContent/>
       </div>
       <div class="flex space-x-m">
-        <div>
-          <ul>
-              {navMenu1.map((item) => (
-                  <li><a href={item.href} rel={item.rel}>{item.text}</a></li>))}
-          </ul>
-        </div>
-        <div>
-          <ul>
-              {navMenu2.map((item) => (
-                  <li><a href={item.href} rel={item.rel}>{item.text}</a></li>))}
-          </ul>
-        </div>
+        <ul>
+            {navMenu1.map((item) => (
+                <li><a href={item.href} rel={item.rel}>{item.text}</a></li>))}
+        </ul>
+        <ul>
+            {navMenu2.map((item) => (
+                <li><a href={item.href} rel={item.rel}>{item.text}</a></li>))}
+        </ul>
       </div>
     </div>
   </div>
@@ -34,5 +30,13 @@ const { navMenu1, navMenu2 } = footerMenus;
     border-top: 1px solid var(--gray-6);
     padding-top: var(--space-m);
     padding-bottom: var(--space-m);
+  }
+
+  .fine-print {
+    max-width: 60ch;
+  }
+
+  .footer-contents {
+    align-items: flex-start;
   }
 </style>

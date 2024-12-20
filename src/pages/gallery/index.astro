@@ -1,73 +1,10 @@
 ---
-import BaseLayout from "../../layouts/BaseLayout.astro";
+import PhotoLayout from "../../layouts/PhotoLayout.astro";
+import PhotoThumbnailsWithQuery from "../../components/PhotoThumbnailsWithQuery.astro";
 
 export const prerender = false;
-
-const response = await fetch("http://localhost:8000/api/photos");
-const data = await response.json();
-
 ---
-<BaseLayout title="Gallery">
-  <div class="wrapper">
-    <ul class="flex items-center space-x-2xs">
-      <li><a href="#">tag 1</a></li>
-      <li><a href="#">tag 2</a></li>
-      <li><a href="#">tag 3</a></li>
-    </ul>
-  </div>
-  <div class="wrapper image-gallery mt-xs" id="gallery">
-    {data.map((item, index) =>
-        <a href={`/gallery/${item.id}`}>
-          <img src={item.thumbnail_url}  alt={item.title}/>
-        </a>
-    )}
-  </div>
-</BaseLayout>
 
-<style lang="scss">
-  .image-gallery {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px;
-  }
-
-  .image-gallery > * {
-    flex-grow: 1;
-
-    & > img {
-      max-height: 100%;
-      min-width: 100%;
-      object-fit: cover;
-      vertical-align: bottom;
-    }
-  }
-
-  /*@media (aspect-ratio <= 1/1) {*/
-  /*  .image-gallery > * {*/
-  /*    height: 30vh;*/
-  /*  }*/
-  /*}*/
-
-  /*@media (height <= 480px) {*/
-  /*  .image-gallery > * {*/
-  /*    height: 80vh;*/
-  /*  }*/
-  /*}*/
-
-  @media (aspect-ratio <= 1/1) and (width <= 480px) {
-    ul {
-      flex-direction: row;
-    }
-
-    li {
-      height: auto;
-      width: 100%;
-    }
-
-    img {
-      width: 100%;
-      max-height: 75vh;
-      min-width: 0;
-    }
-  }
-</style>
+<PhotoLayout title="Gallery">
+  <PhotoThumbnailsWithQuery url="http://localhost:8000/api/photos/album/none" />
+</PhotoLayout>

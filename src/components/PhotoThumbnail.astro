@@ -1,0 +1,99 @@
+---
+import {formatDate} from "../utils/date-formatter";
+
+const {image} = Astro.props;
+
+const {
+    id,
+    title,
+    image_url: imageSrc,
+    thumbnail_url: thumbnailSrc,
+    uploaded_at: uploadedAt,
+} = image;
+
+const {
+    make,
+    model,
+    focal_length: focalLength,
+    lens,
+    aperture,
+    shutter,
+    iso,
+    shot_at: shotAt
+} = image.exif;
+
+const galleryPermalink = `/gallery/photo/${id}`;
+
+const captionHtml = `
+<div class="lg-multi-image-caption">
+  <div class="e-textbg">
+    ${title ? '<span class="e-title">' + title + '</span>'
+            : '<span class="e-untitled">Untitled</span>'}
+  </div>
+  <div>
+    <span class="e-label">Camera</span>
+    <span class="e-make">${make}</span>
+    <span class="e-model">${model}</span>
+    <span class="e-label">Lens</span>
+    <span class="e-lens">${lens}</span>
+  </div>
+  <div>
+    <span class="e-label">Focal length</span>
+    <span class="e-focal-length">${focalLength}</span>
+    <span class="e-label">Aperture</span>
+    <span class="e-aperture">&fnof;/${aperture}</span>
+    <span class="e-label">Shutter speed</span>
+    <span class="e-shutter">${shutter}</span>
+    <span class="e-label">ISO</span>
+    <span class="e-iso">${iso}</span>
+  </div>
+  <div>
+    <span class="e-label">Uploaded</span>
+    <time class="e-uploaded" datetime=${uploadedAt}>${formatDate(uploadedAt)}</time>
+    <span class="e-label">Taken</span>
+    <time class="e-taken" datetime=${shotAt}>${formatDate(shotAt)}</time>
+    <a href=${galleryPermalink} class="e-permalink">Permalink</a>
+  </div>
+</span>
+`;
+---
+
+<a href={galleryPermalink}>
+  <div class="photo-thumbnail" data-src={imageSrc} data-sub-html={captionHtml}>
+    <img src={thumbnailSrc} alt={title}/>
+  </div>
+</a>
+
+<style lang="scss" is:global>
+  /* We use global styling here, because the caption is not rendered by Astro,
+   * and is taken care of by LightGallery. */
+  .lg-multi-image-caption {
+    //noinspection CssNoGenericFontName
+    font-family: var(--font-mono);
+    font-size: var(--step--2);
+
+    .e-label, .e-permalink {
+      color: var(--gray-9);
+    }
+
+    .e-title {
+      &::before {
+        content: "\201C"; // &ldquo;
+      }
+
+      &::after {
+        content: "\201D"; // &rdquo;
+      }
+
+      font-style: italic;
+    }
+  }
+</style>
+
+<style lang="scss">
+  img {
+    aspect-ratio: 1;
+    object-fit: cover;
+    border: 1px solid var(--gray-6);
+  }
+</style>

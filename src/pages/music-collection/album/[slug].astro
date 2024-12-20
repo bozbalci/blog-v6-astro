@@ -15,37 +15,39 @@ const reviewHtml = marked.parse(album.review);
 ---
 
 <MusicCollectionLayout title="ha">
-  <div class="a-album sidebar">
-    <div class="a-cover-art">
-      <img src={album.cover_image_url} alt="album"/>
+  <div class="flow">
+    <div class="a-album sidebar">
+      <div class="a-cover-art">
+        <img src={album.cover_image_url} alt="album"/>
+      </div>
+      <div class="a-meta font-mono text-step--1">
+        <h1>{album.title}</h1>
+        <dl>
+          <dt>Artist</dt>
+          <dd>{album.artist}</dd>
+          <dt>Release year</dt>
+          <dd>{album.year}</dd>
+            {album.rating !== null && (
+                <>
+                  <dt>Berk's rating</dt>
+                  <dd>
+                    <Stars value={album.rating}/>
+                  </dd>
+                </>
+            )}
+        </dl>
+        <ul>
+            {album.discogs_url && (
+                <li><a href={album.discogs_url}>View release on Discogs</a></li>
+            )}
+            {album.openscrobbler_url && (
+                <li><a href={album.openscrobbler_url}>Scrobble this album</a></li>
+            )}
+        </ul>
+      </div>
     </div>
-    <div class="a-meta font-mono text-step--1">
-      <h1>{album.title}</h1>
-      <dl>
-        <dt>Artist</dt>
-        <dd>{album.artist}</dd>
-        <dt>Release year</dt>
-        <dd>{album.year}</dd>
-        {album.rating !== null && (
-            <>
-              <dt>Berk's rating</dt>
-              <dd>
-                <Stars value={album.rating}/>
-              </dd>
-            </>
-        )}
-      </dl>
-      <ul>
-        {album.discogs_url && (
-            <li><a href={album.discogs_url}>View release on Discogs</a></li>
-        )}
-        {album.openscrobbler_url && (
-            <li><a href={album.openscrobbler_url}>Scrobble this album</a></li>
-        )}
-      </ul>
-    </div>
+    <article class="a-review prose" set:html={reviewHtml}/>
   </div>
-  <article class="a-review prose" set:html={reviewHtml}/>
 </MusicCollectionLayout>
 
 <style lang="scss">

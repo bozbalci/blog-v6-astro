@@ -1,20 +1,20 @@
 ---
 import BaseLayout from './BaseLayout.astro';
 import StickyNav from '../components/StickyNav.astro';
-import {musicNav} from "../content/site/music-collection-navigation";
+import {photoNav} from "../content/site/photo-navigation";
 ---
 
-<BaseLayout title="Music Collection">
+<BaseLayout title="Photo">
   <div class="wrapper">
-    <div class="music-collection sidebar">
-      <StickyNav links={musicNav}/>
+    <div class="photo-gallery sidebar">
+      <StickyNav links={photoNav}/>
       <slot/>
     </div>
   </div>
 </BaseLayout>
 
 <style lang="scss">
-  .music-collection {
+  .photo-gallery {
     --sidebar-target-width: 14.5rem;
     align-items: flex-start;
   }

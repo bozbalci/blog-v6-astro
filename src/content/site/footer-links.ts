@@ -1,18 +1,14 @@
-type NavMenuItem = {
-    href: string;
-    text: string;
-    rel?: string | null;
-};
+import type {NavLink} from "../../types/ui";
 
-const navMenu1: NavMenuItem[] = [
+const navMenu1: NavLink[] = [
     {href: '/about', text: 'About'},
     {href: '/gallery', text: 'Photos'},
-    {href: '/colophon', text: 'Colophon'},
     {href: '/music-collection', text: 'Music Collection'},
+    {href: '/colophon', text: 'Colophon'},
     // {href: '/feed', text: 'RSS'},
 ];
 
-const navMenu2: NavMenuItem[] = [
+const navMenu2: NavLink[] = [
     {href: 'https://github.com/bozbalci', text: 'GitHub', rel: 'nofollow'},
     {href: 'https://bsky.app/profile/bozbalci.me', text: 'Bluesky', rel: 'nofollow'},
     {href: 'https://linkedin.com/in/bozbalci/', text: 'LinkedIn', rel: 'nofollow'},
