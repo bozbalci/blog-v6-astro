@@ -1,4 +1,4 @@
-import type {NavLink} from "../../types/ui";
+import type {NavLink} from "@types/ui";
 
 const navMenu1: NavLink[] = [
     {href: '/about', text: 'About'},

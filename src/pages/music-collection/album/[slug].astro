@@ -1,15 +1,19 @@
 ---
 import {marked} from "marked";
 
-import Stars from "../../../components/Stars.astro";
-import MusicCollectionLayout from "../../../layouts/MusicCollectionLayout.astro";
+import Stars from "@components/Stars.astro";
+import MusicCollectionLayout from "@layouts/MusicCollectionLayout.astro";
+import {api} from "@utils/api";
 
 export const prerender = false;
 
 const {slug} = Astro.params;
 
-const response = await fetch(`http://localhost:8000/api/music/album/${slug}`);
-const album = await response.json();
+if (slug === undefined) {
+  throw new Error("Album slug is missing. Unable to fetch the album.");
+}
+
+const album = await api.getMusicAlbum(slug);
 
 const reviewHtml = marked.parse(album.review);
 ---
@@ -27,22 +31,22 @@ const reviewHtml = marked.parse(album.review);
           <dd>{album.artist}</dd>
           <dt>Release year</dt>
           <dd>{album.year}</dd>
-            {album.rating !== null && (
-                <>
-                  <dt>Berk's rating</dt>
-                  <dd>
-                    <Stars value={album.rating}/>
-                  </dd>
-                </>
-            )}
+          {album.rating !== null && (
+              <>
+                <dt>Berk's rating</dt>
+                <dd>
+                  <Stars value={album.rating}/>
+                </dd>
+              </>
+          )}
         </dl>
         <ul>
-            {album.discogs_url && (
-                <li><a href={album.discogs_url}>View release on Discogs</a></li>
-            )}
-            {album.openscrobbler_url && (
-                <li><a href={album.openscrobbler_url}>Scrobble this album</a></li>
-            )}
+          {album.discogs_url && (
+              <li><a href={album.discogs_url}>View release on Discogs</a></li>
+          )}
+          {album.openscrobbler_url && (
+              <li><a href={album.openscrobbler_url}>Scrobble this album</a></li>
+          )}
         </ul>
       </div>
     </div>

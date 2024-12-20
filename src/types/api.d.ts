@@ -24,6 +24,11 @@ export type Album = {
     title: string;
     slug: string;
     cover_image_url: string;
+    year: number;
+    rating: number;
+    discogs_url: string;
+    openscrobbler_url: string;
+    review: string;
 }
 
 type PhotoExif = {

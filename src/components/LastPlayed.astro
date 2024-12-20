@@ -1,11 +1,11 @@
 ---
 import {Image} from "astro:assets";
-import type {LastfmTrack} from "../types/api";
+
+import {api} from "@utils/api";
 
 
-const response = await fetch("http://localhost:8000/api/music/last-played");
-const data = await response.json();
-const track: LastfmTrack = data.recenttracks.track[0];
+const track = await api.getLastPlayed();
+
 const artist = track.artist["#text"];
 const album = track.album["#text"];
 const title = track.name;

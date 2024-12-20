@@ -1,6 +1,6 @@
 ---
 import AlbumCard from "./AlbumCard.astro";
-import type {Album} from "../types/api";
+import type {Album} from "@types/api";
 
 const {url} = Astro.props;
 const response = await fetch(url);
