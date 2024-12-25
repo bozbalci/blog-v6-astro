@@ -1,4 +1,4 @@
-import type { NavLink } from "../../types/ui";
+import type { NavLink } from "@types/ui";
 
 export const musicNav: NavLink[] = [
   { href: "/music-collection", text: "Everything" },

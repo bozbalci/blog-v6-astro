@@ -1,41 +1,66 @@
----
-import { Image } from "astro:assets";
-
-import { api } from "@utils/api";
-
-const track = await api.getLastPlayed();
-
-const artist = track.artist["#text"];
-const album = track.album["#text"];
-const title = track.name;
-const smallImage = track.image.find((item) => item.size === "small");
-const smallImageUrl = smallImage ? smallImage["#text"] : null;
-const imageAlt = `Cover art of ${album} by ${artist}`;
----
-
-<p>
-  <strong
-    >Latest track from <a href="https://last.fm/user/theconjuring666">Last.fm</a
-    >:</strong
-  >
-  {
-    smallImageUrl ? (
-      <Image src={smallImageUrl} alt={imageAlt} width={16} height={16} />
-    ) : null
-  }
-  <a href={track.url} target="_blank">
-    {artist} &ndash; {title}
-  </a>
-</p>
+<p id="last-played-track">Loading last played track...</p>
 
 <style lang="scss">
-  strong {
+  :global(.last-played-track__text) {
     display: block;
   }
 
-  img {
+  :global(.last-played-track__cover-art) {
     height: 1rem;
     display: inline-block;
     text-decoration: none;
   }
 </style>
+
+<script>
+  import { api } from "@utils/api";
+  import type { LastfmTrack } from "@types/api";
+
+  const CACHE_KEY = "lastPlayedTrack";
+  const CACHE_TIME_MS = 3 * 60 * 1000; // 3 minutes
+
+  document.addEventListener("DOMContentLoaded", async () => {
+    const now = Date.now();
+    const cachedData = JSON.parse(localStorage.getItem(CACHE_KEY));
+
+    if (cachedData && now - cachedData.timestamp < CACHE_TIME_MS) {
+      displayTrack(cachedData.track);
+    } else {
+      try {
+        const track = await api.getLastPlayed();
+
+        localStorage.setItem(
+          CACHE_KEY,
+          JSON.stringify({ track, timestamp: now }),
+        );
+
+        displayTrack(track);
+      } catch (error) {
+        console.error("Failed to fetch last played track:", error);
+      }
+    }
+  });
+
+  function displayTrack(track: LastfmTrack) {
+    const container = document.getElementById("last-played-track");
+    if (!container) return;
+
+    const { artist, album, name: title, url, image } = track;
+    const smallImage = image.find((item) => item.size === "small");
+    const smallImageUrl = smallImage ? smallImage["#text"] : null;
+    const imageAlt = `Cover art of ${album} by ${artist["#text"]}`;
+
+    container.innerHTML = `
+      <strong class="last-played-track__text">
+        Latest track from <a href="https://last.fm/user/theconjuring666">Last.fm</a>:
+      </strong>
+      ${smallImageUrl ?
+        `<img class="last-played-track__cover-art" src="${smallImageUrl}" alt="${imageAlt}" width="16" height="16" />`
+        : ""
+      }
+      <a href="${url}" target="_blank" rel="noopener noreferrer">
+        ${artist["#text"]} &ndash; ${title}
+      </a>
+    `;
+  }
+</script>

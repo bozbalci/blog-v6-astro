@@ -1,4 +1,4 @@
-import type { NavLink } from "../../types/ui";
+import type { NavLink } from "@types/ui";
 
 export const photoNav: NavLink[] = [
   { href: "/gallery", text: "Camera roll" },
